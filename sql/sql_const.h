@@ -67,14 +67,6 @@
   in non-strict mode.
 */
 #define MAX_FIELD_VARCHARLENGTH	(65535-2-1)
-
-/*
-  Estimated max size for VARCHAR for all collations (mbmaxlen = 4)
-  = MAX_FIELD_VARCHARLENGTH / mbmaxlen
-  NOTE: Support for "gb18030" will have mbmaxlen=5 - See MDEV-7495
-  For such charsets, a value of 16383 will cause an error
-*/
-#define MAX_VARCHAR_ESTIMATED_SIZE 16383
 #define MAX_FIELD_BLOBLENGTH UINT_MAX32         /* cf field_blob::get_length() */
 #define CONVERT_IF_BIGGER_TO_BLOB 512           /* Threshold *in characters*   */
 
