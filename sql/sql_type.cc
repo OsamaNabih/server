@@ -2868,7 +2868,7 @@ Type_handler_varchar::Column_definition_set_attributes(
       Support SQL Standard T081: "Optional string types maximum length"
       Allows users to specify VARCHAR fields without a length
     */
-    def->length = def->charset->mbmaxlen ?
+    def->length = def->charset && def->charset->mbmaxlen ?
                   MAX_FIELD_VARCHARLENGTH / def->charset->mbmaxlen :
                   MAX_FIELD_VARCHARLENGTH / thd->db_charset->mbmaxlen;
     return false;
