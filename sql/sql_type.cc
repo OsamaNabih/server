@@ -2868,7 +2868,7 @@ Type_handler_varchar::Column_definition_set_attributes(
       Support SQL Standard T081: "Optional string types maximum length"
       Allows users to specify VARCHAR fields without a length
     */
-    def->length= 16383;
+    def->length= MAX_VARCHAR_ESTIMATED_SIZE;
     return false;
   }
   thd->parse_error();
