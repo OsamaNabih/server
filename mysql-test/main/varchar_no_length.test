@@ -23,3 +23,15 @@ INSERT INTO t1 VALUES (NULL);
 SELECT * FROM t1;
 
 DROP TABLE t1;
+
+--echo #
+--echo # Test VARCHAR without length with various character sets
+--echo #
+
+CREATE TABLE t1 (a VARCHAR CHARSET utf8mb4);
+SHOW CREATE TABLE t1;
+DROP TABLE t1;
+
+CREATE TABLE t1 (a VARCHAR CHARSET latin1);
+SHOW CREATE TABLE t1;
+DROP TABLE t1;
