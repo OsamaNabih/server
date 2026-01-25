@@ -9,7 +9,7 @@
 --echo #
 
 --echo #
---echo # Basic test: CREATE TABLE with VARCHAR without length
+--echo # Basic test: CREATE TABLE with VARCHAR without length or charset
 --echo #
 
 CREATE TABLE t1 (a VARCHAR);
@@ -25,7 +25,7 @@ SELECT * FROM t1;
 DROP TABLE t1;
 
 --echo #
---echo # Test VARCHAR without length with various character sets
+--echo # Test VARCHAR without length with various column charsets
 --echo #
 
 CREATE TABLE t1 (a VARCHAR CHARSET utf8mb4);
@@ -33,5 +33,13 @@ SHOW CREATE TABLE t1;
 DROP TABLE t1;
 
 CREATE TABLE t1 (a VARCHAR CHARSET latin1);
+SHOW CREATE TABLE t1;
+DROP TABLE t1;
+
+--echo #
+--echo # Basic test: CREATE TABLE with charset
+--echo #
+
+CREATE TABLE t1 (a VARCHAR) CHARSET latin1;
 SHOW CREATE TABLE t1;
 DROP TABLE t1;
