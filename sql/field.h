@@ -5339,12 +5339,14 @@ public:
   uint32 pack_flag;
   decimal_digits_t decimals;
   Field::utype unireg_check;
+  bool has_explicit_length;
   Column_definition_attributes()
    :length(0),
     charset(&my_charset_bin),
     pack_flag(0),
     decimals(0),
-    unireg_check(Field::NONE)
+    unireg_check(Field::NONE),
+    has_explicit_length(false)
   { }
   Column_definition_attributes(const Field *field);
   Column_definition_attributes(const Type_all_attributes &attr);

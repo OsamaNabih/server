@@ -2581,6 +2581,12 @@ bool Column_definition::prepare_stage1_typelib(THD *thd,
 bool Column_definition::prepare_stage1_string(THD *thd,
                                               MEM_ROOT *mem_root)
 {
+  if (real_field_type() == MYSQL_TYPE_VARCHAR && !this->has_explicit_length)
+  {
+    char_length= (MAX_FIELD_VARCHARLENGTH) / (charset->mbmaxlen);
+    length= char_length;
+  }
+
   if (real_field_type() == FIELD_TYPE_STRING &&
       length*charset->mbmaxlen > 1024)
   {
@@ -3220,7 +3226,7 @@ static bool mysql_prepare_create_table_stage1(THD *thd,
                                   COLUMN_DEFINITION_TABLE_FIELD,
                                   &dattr))
       DBUG_RETURN(true);
-
+    
     DBUG_ASSERT(sql_field->charset);
 
     if (check_column_name(sql_field->field_name))
