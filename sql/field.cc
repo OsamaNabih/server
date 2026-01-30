@@ -11172,6 +11172,7 @@ Column_definition::Column_definition(THD *thd, Field *old_field,
   invisible= old_field->invisible;
   interval_list.empty(); // prepare_interval_field() needs this
   char_length= (uint) length;
+  has_explicit_length= true;
 
   if (orig_field)
   {

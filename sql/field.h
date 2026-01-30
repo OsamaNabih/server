@@ -5346,7 +5346,7 @@ public:
     pack_flag(0),
     decimals(0),
     unireg_check(Field::NONE),
-    has_explicit_length(false)
+    has_explicit_length(true)
   { }
   Column_definition_attributes(const Field *field);
   Column_definition_attributes(const Type_all_attributes &attr);
