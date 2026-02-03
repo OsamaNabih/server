@@ -2869,6 +2869,7 @@ Type_handler_varchar::Column_definition_set_attributes(
       Allows users to specify VARCHAR fields without a length
       In this case, has_explicit_length is false.
     */
+    def->set_handler(&type_handler_blob);
     return false;
   }
   thd->parse_error();
