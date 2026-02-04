@@ -1,2 +1,0 @@
-# Use default conf to set collation and charset
-!include include/default_my.cnf
