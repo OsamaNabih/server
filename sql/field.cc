@@ -10764,16 +10764,9 @@ void
 Column_definition_attributes::set_length_and_dec(const Lex_length_and_dec_st
                                                  &type)
 {
-  if (type.has_explicit_length()) 
-  {
+  if (type.has_explicit_length())
     length= type.length_overflowed() ? (ulonglong) UINT_MAX32 + 1 :
                                        (ulonglong) type.length();
-    has_explicit_length= true;
-  } 
-  else {
-    length= 0;
-    has_explicit_length= false;
-  }
 
   if (type.has_explicit_dec())
     decimals= type.dec();
@@ -11135,8 +11128,7 @@ Column_definition_attributes::Column_definition_attributes(const Field *field)
   charset(field->charset()), // May be NULL ptr
   pack_flag(0),
   decimals(field->decimals()),
-  unireg_check(field->unireg_check),
-  has_explicit_length(true)
+  unireg_check(field->unireg_check)
 {}
 
 
@@ -11147,8 +11139,7 @@ Column_definition_attributes::
   charset(attr.collation.collation),
   pack_flag(attr.unsigned_flag ? 0 : FIELDFLAG_DECIMAL),
   decimals(attr.decimals),
-  unireg_check(Field::NONE),
-  has_explicit_length(true)
+  unireg_check(Field::NONE)
 {}
 
 
@@ -11264,7 +11255,6 @@ Column_definition::redefine_stage1_common(const Column_definition *dup_field,
   comment=      dup_field->comment;
   option_list=  dup_field->option_list;
   versioning=   dup_field->versioning;
-  has_explicit_length= dup_field->has_explicit_length;
 }
 
 
